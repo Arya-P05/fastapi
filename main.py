@@ -41,5 +41,5 @@ def get_one_post(id: int, response: Response):
 
     if not post:
         response.status_code = status.HTTP_404_NOT_FOUND
-
+        return {"Message": f"Post with id: {id} was not found!"}
     return post
