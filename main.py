@@ -27,7 +27,7 @@ def root():
 def get_posts():
     return {"data": my_posts}
 
-@app.post("/posts/")
+@app.post("/posts/", status_code=status.HTTP_201_CREATED)
 def create_posts(payload: Post):
     # return {"title": f"{payload.title}", "content": f"{payload.content}", "is_post_public": payload.public, "rating": payload.rating}
     post_dict = payload.model_dump()
