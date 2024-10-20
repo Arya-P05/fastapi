@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
 from pydantic import BaseModel
 from typing import Optional
 from random import randint
@@ -36,6 +36,10 @@ def create_posts(payload: Post):
     return post_dict
 
 @app.get("/posts/{id}") # this id field is known as a path parameter
-def get_one_post(id: int):
+def get_one_post(id: int, response: Response):
     post = get_post_from_id(id)
+
+    if not post:
+        response.status_code = 404
+        
     return post
