@@ -49,7 +49,7 @@ def get_one_post(id: int):
     else:
         return post
 
-@app.delete("/posts/{id}")
+@app.delete("/posts/{id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_post(id: int):
     delete_post_from_id(id)
-    return {"Message": "Post deleted!"}
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
